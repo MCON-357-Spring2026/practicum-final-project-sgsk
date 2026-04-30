@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap');
+
+:root {
+    --navy: #0d1b2a;
+    --navy-light: #162032;
+    --navy-mid: #1e2e42;
+    --gold: #c9a84c;
+    --gold-light: #e8cc85;
+    --gold-dim: #7a6230;
+    --cream: #f5f0e8;
+    --cream-dim: #c8bfa8;
+    --white: #ffffff;
+    --error: #e07070;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--navy);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    min-height: 100vh;
+}
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    background:
+            radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.06) 0%, transparent 60%),
+            radial-gradient(ellipse at 80% 20%, rgba(201, 168, 76, 0.04) 0%, transparent 50%),
+            var(--navy);
+}
+
+.brand-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.brand-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+}
+
+.brand-header .tagline {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    margin-top: 0.5rem;
+}
+
+.candle-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin: 0.75rem 0 0;
+}
+
+.candle-divider .line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-dim));
+}
+
+.candle-divider .line.right {
+    background: linear-gradient(to left, transparent, var(--gold-dim));
+}
+
+.candle-divider .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+}
+
+.signup-card {
+    background: var(--navy-light);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    border-radius: 16px;
+    padding: 2.5rem 2.5rem;
+    width: 100%;
+    max-width: 480px;
+    box-shadow:
+            0 0 0 1px rgba(201, 168, 76, 0.05),
+            0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+.signup-card h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.02em;
+}
+
+.card-subtitle {
+    font-size: 0.8rem;
+    color: var(--cream-dim);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.4rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    background: var(--navy-mid);
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.form-group input::placeholder {
+    color: rgba(197, 191, 168, 0.35);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: rgba(201, 168, 76, 0.5);
+    box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.08);
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper::after {
+    content: '';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid var(--gold-dim);
+    pointer-events: none;
+}
+
+.form-group select option {
+    background: var(--navy-mid);
+    color: var(--cream);
+}
+
+.alert-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.alert-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.alert-row input {
+    flex: 1;
+}
+
+.alert-row .unit-label {
+    font-size: 0.75rem;
+    color: var(--cream-dim);
+    white-space: nowrap;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+}
+
+.btn-add-alert {
+    background: transparent;
+    border: 1px dashed rgba(201, 168, 76, 0.3);
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    color: var(--gold-dim);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 0.4rem;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-add-alert:hover {
+    border-color: rgba(201, 168, 76, 0.6);
+    color: var(--gold-light);
+}
+
+.location-row {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.location-row input {
+    flex: 1;
+}
+
+.btn-gps {
+    background: rgba(201, 168, 76, 0.08);
+    border: 1px solid rgba(201, 168, 76, 0.25);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: var(--gold);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-gps:hover {
+    background: rgba(201, 168, 76, 0.15);
+    border-color: rgba(201, 168, 76, 0.5);
+}
+
+.divider {
+    height: 1px;
+    background: rgba(201, 168, 76, 0.1);
+    margin: 1.75rem 0;
+}
+
+.btn-submit {
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--navy);
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+}
+
+.btn-submit:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+.footer-note {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.72rem;
+    color: var(--cream-dim);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    opacity: 0.7;
+}

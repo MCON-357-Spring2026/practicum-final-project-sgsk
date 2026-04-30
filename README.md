@@ -67,22 +67,23 @@ or taps "Update my location" in any text to refresh their saved location
 
 ```
 shabbat-alert/
-├── client/                  # React frontend
+├── client/
 │   ├── src/
-│   │   ├── components/      # SignupForm, AlertPreferences, LocationPicker
-│   │   ├── pages/           # Home, Signup, ManageAlerts
+│   │   ├── SignupForm.jsx
+│   │   ├── AlertPreferences.jsx
+│   │   ├── LocationPicker.jsx
+│   │   ├── Home.jsx
+│   │   ├── Signup.jsx
+│   │   ├── ManageAlerts.jsx
 │   │   └── App.jsx
 │   └── package.json
-├── server/                  # Node.js + Express backend
-│   ├── routes/
-│   │   ├── users.js         # Signup, preferences, opt-out
-│   │   └── alerts.js        # Scheduler, SMS dispatch
-│   ├── services/
-│   │   ├── hebcal.js        # Zmanim and holiday fetching (External API 1)
-│   │   ├── twilio.js        # SMS sending (External API 2)
-│   │   └── scheduler.js     # Weekly cron job
-│   ├── db/
-│   │   └── schema.sql       # PostgreSQL schema
+├── server/
+│   ├── users.js
+│   ├── alerts.js
+│   ├── hebcal.js
+│   ├── twilio.js
+│   ├── scheduler.js
+│   ├── schema.sql
 │   └── index.js
 ├── .env.example
 ├── .gitignore

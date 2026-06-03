@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './SignupForm.css';
+import API_URL from './api';
 
 function SignupForm() {
     const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ function SignupForm() {
         zmanim_opinion: 'gra',
         alert_preferences: [18]
     });
+    const [consented, setConsented] = useState(false);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,6 +32,51 @@ function SignupForm() {
                 alert('Could not get location. Please enter it manually.');
             }
         );
+    };
+
+    const geocodeLocation = async (label) => {
+        if (!label) return;
+        try {
+            const res = await fetch(
+                `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(label)}&format=json&limit=1`
+            );
+            const data = await res.json();
+            if (data.length > 0) {
+                setFormData(prev => ({
+                    ...prev,
+                    location_lat: parseFloat(data[0].lat),
+                    location_lng: parseFloat(data[0].lon),
+                    location_label: label
+                }));
+            } else {
+                alert('Location not found. Try a different city name.');
+            }
+        } catch {
+            alert('Could not look up location.');
+        }
+    };
+    const handleSubmit = async () => {
+        if (!consented) {
+            alert('Please agree to receive SMS alerts.');
+            return;
+        }
+        if (!formData.first_name || !formData.phone_number) {
+            alert('Please enter your name and phone number.');
+            return;
+        }
+        if (!formData.location_lat || !formData.location_lng) {
+            alert('Please enter a location or use Detect.');
+            return;
+        }
+
+        const res = await fetch(`${API_URL}/api/signup`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        });
+        const data = await res.json();
+        if (data.success) alert('You\'re signed up!');
+        else alert('Error: ' + data.error);
     };
 
     return (
@@ -65,9 +112,9 @@ function SignupForm() {
                         value={formData.zmanim_opinion}
                         onChange={handleChange}
                     >
-                        <option value="gra">Gra</option>
-                        <option value="baalhatanya">Baal HaTanya</option>
-                        <option value="MGA">Magen Avraham</option>
+                        <option value="gra">Gra (Vilna Gaon)</option>
+                        <option value="ma">Magen Avraham</option>
+                        <option value="rt">Rabbeinu Tam</option>
                     </select>
                 </div>
             </div>
@@ -102,25 +149,29 @@ function SignupForm() {
                     )}
                 </div>
             </div>
-
             <div className="form-group">
                 <label>Location</label>
                 <div className="location-row">
                     <input
                         name="location_label"
-                        placeholder="City, State"
+                        placeholder="Brooklyn, NY"
                         value={formData.location_label}
                         onChange={handleChange}
+                        onBlur={(e) => geocodeLocation(e.target.value)}
                     />
                     <button className="btn-gps" onClick={handleGPS}>
                         Detect
                     </button>
                 </div>
             </div>
-
             <div className="divider" />
-
-            <button className="btn-submit">
+            <div className="form-group">
+                <label className="checkbox-label">
+                    <input type="checkbox" checked={consented} onChange={e => setConsented(e.target.checked)} />
+                    I agree to receive SMS alerts. Message and data rates may apply. Reply STOP to unsubscribe.
+                </label>
+            </div>
+            <button className="btn-submit" onClick={handleSubmit}>
                 Send me Shabbat alerts
             </button>
         </div>

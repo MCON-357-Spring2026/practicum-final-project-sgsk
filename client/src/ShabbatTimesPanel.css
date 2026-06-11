@@ -1,0 +1,233 @@
+.times-panel {
+    width: 100%;
+    background: rgba(22, 32, 50, 0.55);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    border-radius: 14px;
+    padding: clamp(1.15rem, 3vw, 1.75rem);
+}
+
+.times-panel-inner {
+    margin-bottom: 1.25rem;
+}
+
+.times-panel-inner--refresh {
+    opacity: 0.72;
+    transition: opacity 0.2s;
+}
+
+.times-panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-bottom: 1.15rem;
+    margin-bottom: 1.15rem;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    flex-wrap: wrap;
+}
+
+.times-city {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 4vw, 1.85rem);
+    font-weight: 600;
+    color: var(--gold-light);
+    line-height: 1.15;
+}
+
+.times-date {
+    font-size: 0.88rem;
+    color: var(--cream-dim);
+    margin-top: 0.2rem;
+}
+
+.times-local {
+    color: var(--gold-dim);
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+}
+
+.times-parasha {
+    text-align: right;
+}
+
+.times-parasha-label {
+    display: block;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--gold-dim);
+}
+
+.times-parasha-name {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    color: var(--cream);
+    line-height: 1.2;
+}
+
+.times-tiles {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+    max-width: 28rem;
+    margin: 0 auto;
+}
+
+.times-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.25rem 0.85rem;
+    border-radius: 10px;
+    background: rgba(13, 27, 42, 0.5);
+    border: 1px solid rgba(201, 168, 76, 0.12);
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.times-tile:hover {
+    border-color: rgba(201, 168, 76, 0.28);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+
+.times-tile--primary {
+    background: linear-gradient(
+        160deg,
+        rgba(201, 168, 76, 0.14) 0%,
+        rgba(13, 27, 42, 0.55) 70%
+    );
+    border-color: rgba(201, 168, 76, 0.32);
+}
+
+.times-tile-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.times-tile-time {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.85rem, 5vw, 2.5rem);
+    font-weight: 600;
+    color: var(--gold-light);
+    line-height: 1.1;
+}
+
+.times-tile-label {
+    margin-top: 0.4rem;
+    font-size: 0.92rem;
+    color: var(--cream);
+    font-weight: 400;
+}
+
+.times-tile-sub {
+    font-size: 0.75rem;
+    color: var(--cream-dim);
+    margin-top: 0.15rem;
+}
+
+.times-skeleton-head {
+    height: 3.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.15rem;
+    background: linear-gradient(
+        90deg,
+        rgba(201, 168, 76, 0.06) 0%,
+        rgba(201, 168, 76, 0.14) 50%,
+        rgba(201, 168, 76, 0.06) 100%
+    );
+    background-size: 200% 100%;
+    animation: times-shimmer 1.4s ease-in-out infinite;
+}
+
+.times-skeleton-tile {
+    height: 8.5rem;
+    border-radius: 10px;
+    background: linear-gradient(
+        90deg,
+        rgba(30, 46, 66, 0.5) 0%,
+        rgba(30, 46, 66, 0.85) 50%,
+        rgba(30, 46, 66, 0.5) 100%
+    );
+    background-size: 200% 100%;
+    animation: times-shimmer 1.4s ease-in-out infinite;
+}
+
+.times-skeleton-tile:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+@keyframes times-shimmer {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+.times-refresh {
+    text-align: center;
+    color: var(--cream-dim);
+    font-size: 0.82rem;
+    margin-top: 0.75rem;
+}
+
+.times-search-block {
+    padding-top: 1.15rem;
+    border-top: 1px solid rgba(201, 168, 76, 0.12);
+}
+
+.times-search-label {
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold-dim);
+    margin-bottom: 0.55rem;
+}
+
+.times-search-block .location-picker--quiet .location-search-row {
+    flex-direction: column;
+}
+
+.times-search-block .location-input-wrap {
+    width: 100%;
+}
+
+.times-credit {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--cream-dim);
+}
+
+.times-credit a {
+    color: var(--gold-dim);
+    text-decoration: none;
+}
+
+.times-credit a:hover {
+    color: var(--gold-light);
+}
+
+.times-error {
+    text-align: center;
+    color: var(--error);
+    font-size: 0.92rem;
+    padding: 1.5rem 0;
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 480px) {
+    .times-tiles {
+        max-width: none;
+    }
+
+    .times-parasha {
+        text-align: left;
+        width: 100%;
+    }
+}
